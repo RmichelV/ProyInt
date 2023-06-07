@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Kanit';
+    src: url('../fonts/Kanit/Kanit-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+  
+@font-face {
+    font-family: 'Kanit';
+    src: url('../fonts/Kanit/Kanit-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+  
+@font-face {
+    font-family: 'Kanit';
+    src: url('../fonts/Kanit/Kanit-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+  
+@font-face {
+    font-family: 'Kanit';
+    src: url('../fonts/Kanit/Kanit-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+  
+@font-face {
+    font-family: 'Kanit';
+    src: url('../fonts/Kanit/Kanit-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
