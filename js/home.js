@@ -5,6 +5,14 @@ const btnVmDr = document.getElementById('btn-vm-dr');
 const btnVmPy = document.getElementById('btn-vm-py');
 const btnVmUy = document.getElementById('btn-vm-uy');
 
+const btnReservar = document.getElementById('btnR');
+
+// Agrega un evento de clic al botón
+// btnReservar.addEventListener('click', function() {
+   
+// });
+
+
 
 const modalChacaltaya = document.getElementById('modalChacaltaya');
 const modalCityTour = document.getElementById('modalCityTour');
@@ -81,6 +89,10 @@ function ocultarModalUyuni() {
     document.body.classList.remove('modal-open'); 
 }
 
+function cambiarAReservaTour(){
+window.location.href="../php/reserva_tour.php"
+}
+
 
 btnVmCh.addEventListener('click', mostrarModalChacaltaya);
 
@@ -106,5 +118,4 @@ closeModalDr.addEventListener('click', ocultarModalCaminoDeLaMuerte);
 closeModalPy.addEventListener('click', ocultarModalPampasDeYacuma);
 
 closeModalUy.addEventListener('click', ocultarModalUyuni);
-
 

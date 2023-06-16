@@ -38,18 +38,8 @@ padding: 0;
 margin: 0;
 }
 
-.atr-Container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
 
-.atr{
-    border: 2px solid red;
-    box-sizing: border-box;
-    width: 30%;
-    margin: 10px;
-}
+
 
 .form-atr{
     margin: 10px;
@@ -68,7 +58,7 @@ height: 500px;
 }
 
 .h1-atr{
-
+text-align: center;
 }
 
 .p-atr{
