@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Conexión a la base de datos
     $servername = "207.244.255.46";
     $username = "ratiosof12x_turismo";
-    $password_db = "Iq#rt$^*$ZYb";
+    $password_db = 'Iq#rt$^*$ZYb';
     $database = "ratiosof12x_bd_turismo";
 
     $conn = new mysqli($servername, $username, $password_db, $database);
@@ -26,8 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Error de conexión: " . $conn->connect_error);
     }
 
+    // Escapar caracteres especiales en la contraseña
+    $password = mysqli_real_escape_string($conn, $password);
+
     // Consulta para verificar el correo y contraseña en la tabla datos_persona
-    $sql = "SELECT * FROM datos_persona WHERE Correo = '$correo' AND Password = '$password'";
+    $sql = "SELECT * FROM DATOS_PERSONA WHERE Correo = '$correo' AND Password = '$password'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -37,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["Id_persona"] = $row["Id_persona"];
 
         // Obtener el Id_cliente correspondiente a la Id_persona
-        $sqlCliente = "SELECT Id_cliente FROM cliente WHERE Id_persona = '" . $row["Id_persona"] . "'";
+        $sqlCliente = "SELECT Id_cliente FROM CLIENTE WHERE Id_persona = '" . $row["Id_persona"] . "'";
         $resultCliente = $conn->query($sqlCliente);
         if ($resultCliente->num_rows > 0) {
             $rowCliente = $resultCliente->fetch_assoc();

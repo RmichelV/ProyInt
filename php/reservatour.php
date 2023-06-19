@@ -41,11 +41,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $idCliente = $_SESSION["Id_cliente"];
 
     // Realizar la conexión a la base de datos
-    $servername = "207.244.255.46";
-    $username = "ratiosof12x_turismo";
-    $password = "Iq#rt$^*$ZYb";
-    $dbname = "ratiosof12x_bd_turismo";
-
+	$servername = "207.244.255.46";
+	$username = "ratiosof12x_turismo";
+	$password = 'Iq#rt$^*$ZYb';
+	$escaped_password = addslashes($password);
+	$dbname = "ratiosof12x_bd_turismo";
     // Crear conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Preparar la consulta SQL para insertar la reserva en la tabla reserva_tour
-    $sql = "INSERT INTO reserva_tour (Id_tour, Cantidad, Fecha_de_la_actividad, Id_cliente)
+    $sql = "INSERT INTO RESERVA_TOUR (Id_tour, Cantidad, Fecha_de_la_actividad, Id_cliente)
             VALUES ('$idTour', '$cantidad', '$fecha', '$idCliente')";
 
     if ($conn->query($sql) === TRUE) {

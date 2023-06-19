@@ -63,7 +63,8 @@
     // Conexión a la base de datos
     $servername = "207.244.255.46";
     $username = "ratiosof12x_turismo";
-    $password = "Iq#rt$^*$ZYb";
+    $password = 'Iq#rt$^*$ZYb';
+    $escaped_password = addslashes($password);
     $database = "ratiosof12x_bd_turismo";
 
     $conn = new mysqli($servername, $username, $password, $database);
@@ -76,9 +77,9 @@
     // Obtener los datos de las tablas correspondientes al botón presionado
     if (isset($_POST["clientes"])) {
         $query = "SELECT c.Id_cliente, p.Nombre, p.Apellido, t.Tipo_de_cliente
-                  FROM cliente c
-                  INNER JOIN datos_persona p ON c.Id_persona = p.Id_persona
-                  INNER JOIN tipo_de_cliente t ON c.Id_tipo_de_cliente = t.Id_tipo_de_cliente";
+                  FROM CLIENTE c
+                  INNER JOIN DATOS_PERSONA p ON c.Id_persona = p.Id_persona
+                  INNER JOIN TIPO_DE_CLIENTE t ON c.Id_tipo_de_cliente = t.Id_tipo_de_cliente";
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) {
@@ -105,10 +106,10 @@
         }
     } elseif (isset($_POST["empleados"])) {
         $query = "SELECT e.Id_empleado, p.Nombre, p.Apellido, c.Cargo
-                  FROM empleado e
-                  INNER JOIN datos_empleado de ON e.Id_datos_empleado = de.Id_datos_empleado
-                  INNER JOIN datos_persona p ON de.Id_persona = p.Id_persona
-                  INNER JOIN cargo c ON de.Id_cargo = c.Id_cargo";
+                  FROM EMPLEADO e
+                  INNER JOIN DATOS_EMPLEADO de ON e.Id_datos_empleado = de.Id_datos_empleado
+                  INNER JOIN DATOS_PERSONA p ON de.Id_persona = p.Id_persona
+                  INNER JOIN CARGO c ON de.Id_cargo = c.Id_cargo";
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) {
@@ -135,9 +136,9 @@
         }
     } elseif (isset($_POST["reservas"])) {
         $query = "SELECT r.Id_reserva, p.Nombre, r.Cantidad, r.Fecha_inicio
-                  FROM reserva r
-                  INNER JOIN cliente c ON r.Id_cliente = c.Id_cliente
-                  INNER JOIN datos_persona p ON c.Id_persona = p.Id_persona";
+                  FROM RESERVA r
+                  INNER JOIN CLIENTE c ON r.Id_cliente = c.Id_cliente
+                  INNER JOIN DATOS_PERSONA p ON c.Id_persona = p.Id_persona";
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) {
@@ -163,7 +164,7 @@
             echo "<div class='no-records'>No se encontraron reservas.</div>";
         }
     } elseif (isset($_POST["reserva_tour"])) {
-        $query = "SELECT * FROM reserva_tour";
+        $query = "SELECT * FROM RESERVA_TOUR";
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) {

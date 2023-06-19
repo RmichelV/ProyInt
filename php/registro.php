@@ -31,7 +31,7 @@ if (isset($_COOKIE["usuario"])) {
 // Conexión a la base de datos
 $servername = "207.244.255.46";
 $username = "ratiosof12x_turismo";
-$password = "Iq#rt$^*$ZYb";
+$password = 'Iq#rt$^*$ZYb';
 $dbname = "ratiosof12x_bd_turismo";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Obtener el ID de la nacionalidad
-    $sql_nacionalidad = "SELECT Id_nacionalidad FROM nacionalidad WHERE Id_nacionalidad = $nacionalidad";
+    $sql_nacionalidad = "SELECT Id_nacionalidad FROM NACIONALIDAD WHERE Id_nacionalidad = $nacionalidad";
     $result_nacionalidad = $conn->query($sql_nacionalidad);
 
     if ($result_nacionalidad->num_rows == 0) {
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_nacionalidad = $row_nacionalidad["Id_nacionalidad"];
 
     // Obtener el ID del tipo de documento
-    $sql_documento = "SELECT Id_documento FROM documento WHERE Id_documento = $tipo_documento";
+    $sql_documento = "SELECT Id_documento FROM DOCUMENTO WHERE Id_documento = $tipo_documento";
     $result_documento = $conn->query($sql_documento);
 
     if ($result_documento->num_rows == 0) {
@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_tipo_documento = $row_documento["Id_documento"];
 
     // Obtener el ID del tipo de comunicación
-    $sql_comunicacion = "SELECT Id_comunicacion FROM comunicacion WHERE Id_comunicacion = $comunicacion";
+    $sql_comunicacion = "SELECT Id_comunicacion FROM COMUNICACION WHERE Id_comunicacion = $comunicacion";
     $result_comunicacion = $conn->query($sql_comunicacion);
 
     if ($result_comunicacion->num_rows == 0) {
@@ -92,14 +92,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_comunicacion = $row_comunicacion["Id_comunicacion"];
 
     // Insertar los datos en la tabla datos_persona
-    $sql = "INSERT INTO datos_persona (Nombre, Apellido, Correo, Id_nacionalidad, Id_comunicacion, Numero_de_comunicacion, Id_tipo_de_documento, Numero_de_documento, Password) VALUES ('$nombre', '$apellido', '$correo', $id_nacionalidad, $id_comunicacion, '$numero_comunicacion', $id_tipo_documento, '$numero_documento', '$password')";
+    $sql = "INSERT INTO DATOS_PERSONA (Nombre, Apellido, Correo, Id_nacionalidad, Id_comunicacion, Numero_de_comunicacion, Id_tipo_de_documento, Numero_de_documento, Password) VALUES ('$nombre', '$apellido', '$correo', $id_nacionalidad, $id_comunicacion, '$numero_comunicacion', $id_tipo_documento, '$numero_documento', '$password')";
 
     if ($conn->query($sql) === TRUE) {
         // Obtener el ID de la persona insertada
         $id_persona = $conn->insert_id;
 
         // Insertar los datos en la tabla cliente
-        $sql_cliente = "INSERT INTO cliente (Id_persona, Id_tipo_de_cliente) VALUES ($id_persona, $id_tipo_cliente)";
+        $sql_cliente = "INSERT INTO CLIENTE (Id_persona, Id_tipo_de_cliente) VALUES ($id_persona, $id_tipo_cliente)";
 
         if ($conn->query($sql_cliente) === TRUE) {
             // Redirigir al usuario a inicio.php
